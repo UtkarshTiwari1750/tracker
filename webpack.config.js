@@ -1,9 +1,21 @@
 const path = require("path");
 
 module.exports = {
-    mode: "development", // or "production"
+    mode: "production", // or "production"
   // Specify the entry point(s) for webpack to start building the bundle.
-  entry: "./src/index.js",
+  entry: "./src/main.ts",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
   output: {
     filename: "tracker.js",
     path: path.resolve(__dirname, "dist"),
